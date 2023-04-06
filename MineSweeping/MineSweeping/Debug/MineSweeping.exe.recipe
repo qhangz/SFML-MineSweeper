@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\work\gameprogram\SFML_MineSweeping\MineSweeping\Debug\MineSweeping.exe</FullPath>
+      <FullPath>D:\work\gameprogram\SFML_MineSweeper\MineSweeping\Debug\MineSweeping.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
