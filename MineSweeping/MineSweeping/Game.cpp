@@ -42,7 +42,7 @@ void Game::Input() {
 		//鼠标交互
 		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 		{
-			if (mouseClickTimer.getElapsedTime().asMilliseconds() > 500)
+			if (mouseClickTimer.getElapsedTime().asMilliseconds() > 500)	//windows系统中默认的双击间隔时间就是500毫秒
 			{
 				std::cout << "Mouse::Left Pressed" << std::endl;
 			}
@@ -59,6 +59,8 @@ void Game::Input() {
 		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right)
 		{
 			std::cout << "Mouse::Right Pressed" << std::endl;
+			std::cout << "Mouse.X:" << event.mouseButton.x << std::endl;
+			std::cout << "Mouse.Y:" << event.mouseButton.y << std::endl;
 		}
 
 	}
