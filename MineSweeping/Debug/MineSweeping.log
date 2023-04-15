@@ -1,6 +1,1 @@
-﻿  Game.cpp
-D:\work\gameprogram\SFML_MineSweeper\MineSweeping\Game.h(36,2): warning C4091: “typedef ”: 没有声明变量时忽略“DRIDSTATE”的左侧
-  MineSweeping.cpp
-D:\work\gameprogram\SFML_MineSweeper\MineSweeping\Game.h(36,2): warning C4091: “typedef ”: 没有声明变量时忽略“DRIDSTATE”的左侧
-  正在生成代码...
-  MineSweeping.vcxproj -> D:\work\gameprogram\SFML_MineSweeper\Debug\MineSweeping.exe
+﻿  MineSweeping.vcxproj -> D:\work\gameprogram\SFML_MineSweeper\Debug\MineSweeping.exe
