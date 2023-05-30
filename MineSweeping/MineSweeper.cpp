@@ -249,28 +249,59 @@ void MineSweeper::Input() {
 		}
 
 		//鼠标交互
-		//鼠标左键
+		//鼠标左键Pressed
+		//sf::Vector2i P1, P2;	//两处位置快速点击触发双击的BUG修复
 		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
 		{
+			P2 = Mouse::getPosition(window);
+			
 			if (isGameOverState == ncNo)
 			{
-				if (mouseClickTimer.getElapsedTime().asMilliseconds() > 300)	//windows系统中默认的双击间隔时间就是500毫秒,500毫秒感觉太慢了
+				mouse_RL_ClkReady++;	//左键按下则RL双击准备
+				mouseRLClickTimer_L.restart();
+				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_R.getElapsedTime().asMilliseconds() < 300)
 				{
-					//std::cout << "Mouse::Left Pressed" << std::endl;
-					LButtonDown(Mouse::getPosition(window));	//鼠标单击
+					RLButtonDown(Mouse::getPosition(window));
+					RecoverGridTimer.restart();
 				}
 				else
 				{
-					//std::cout << "Mouse::Left Double Clicked" << std::endl;
-					LButtinDblClk(Mouse::getPosition(window));	//鼠标双击
+					//windows系统中默认的双击间隔时间就是500毫秒,500毫秒感觉太慢了
+					//两处位置快速点击触发双击的BUG修复
+					//std::cout << "Mouse1:" << P1.x << "mouse1:" << P1.y << std::endl;
+					//std::cout << "Mouse2:" << P2.x << "mouse2:" << P2.y << std::endl;
+					if (mouseClickTimer.getElapsedTime().asMilliseconds() < 300 && (P2.x - P1.x) < gridSize && (P2.y - P1.y) < gridSize)
+					{
+						//std::cout << "Mouse::Left Double Clicked" << std::endl;
+						//LButtinDblClk(Mouse::getPosition(window));	//鼠标双击
+						LButtonDblClk(P2);
+						mouseDlbClkReady = false;
+					}
+					else
+					{
+						//std::cout << "Mouse::Left Pressed" << std::endl;
+						//LButtonDown(Mouse::getPosition(window));	//鼠标单击
+						LButtonDown(P2);
+						mouseDlbClkReady = true;
+
+					}
 				}
+				
 			}
 		}
+		//鼠标左键Released
 		if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
 		{
+			P1 = Mouse::getPosition(window);	//两处位置快速点击触发双击的BUG修复
+			if (isGameOverState == ncNo)
+			{
+				mouse_RL_ClkReady = 0;//状态清除
+				RecoverGrid(Mouse::getPosition(window));
+			}
 			if (isGameOverState == ncNo)
 			{
 				mouseClickTimer.restart();	//SFML的clock类有getElapsedTime()和restart()两个函数
+				
 				if (isGameBegin == false)
 				{
 					if (ButtonRectEasy.contains(event.mouseButton.x, event.mouseButton.y))
@@ -316,17 +347,39 @@ void MineSweeper::Input() {
 				gameQuit = true;
 			}
 			//std::cout << "Mouse::Left Released" << std::endl;
+
+			
 		}
-		//鼠标右键
+		//鼠标右键Pressed
 		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right)
 		{
 			if (isGameOverState == ncNo)
 			{
-				RButtonDown(Mouse::getPosition(window));	//鼠标单击
+				mouse_RL_ClkReady++;
+				mouseRLClickTimer_R.restart();
+				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_L.getElapsedTime().asMilliseconds() < 300)
+				{
+					RLButtonDown(Mouse::getPosition(window));
+					RecoverGridTimer.restart();
+				}
+				else
+				{
+					RButtonDown(Mouse::getPosition(window));	//鼠标单击
+				}
+			
 			}
 			/*std::cout << "Mouse::Right Pressed" << std::endl;
 			std::cout << "Mouse.X:" << event.mouseButton.x << std::endl;
 			std::cout << "Mouse.Y:" << event.mouseButton.y << std::endl;*/
+		}
+		//鼠标右键Released
+		if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Right)
+		{
+			if (isGameOverState == ncNo)
+			{
+				mouse_RL_ClkReady = 0;//状态清除
+				RecoverGrid(Mouse::getPosition(window));
+			}
 		}
 		//按键操作
 		if (event.type == sf::Event::EventType::KeyReleased && event.key.code == sf::Keyboard::T)
@@ -414,7 +467,7 @@ void MineSweeper::LButtonDown(Vector2i mPoint)
 
 }
 //鼠标左键双击
-void MineSweeper::LButtinDblClk(Vector2i mPoint)
+void MineSweeper::LButtonDblClk(Vector2i mPoint)
 {
 	int i, j, m, n, lvl;
 	i = (mPoint.x - mCornPoint.x) / gridSize;
@@ -468,6 +521,66 @@ void MineSweeper::LButtinDblClk(Vector2i mPoint)
 		}
 	}
 
+}
+//鼠标左右键同时按下，预览
+void MineSweeper::RLButtonDown(Vector2i mPoint)
+{
+	int i, j, m, n;
+	i = (mPoint.x - mCornPoint.x) / gridSize;	//获取鼠标当前点击的块
+	j = (mPoint.y - mCornPoint.y) / gridSize;
+	if (i >= 0 && i < stageWidth && j >= 0 && j < stageHeight)	//如果点击是在范围内
+	{
+		if (mGameData[j][i].isPress == true)	//如果已经被点击
+		{
+			if (mGameData[j][i].mState != ncFLAG)	//如果当前块不是旗子
+			{
+				//遍历周围八个格子
+				for (m = j - 1; m < j + 2; m++)
+				{
+					for (n = i - 1; n < i + 2; n++)
+					{
+						if (m >= 0 && m < stageHeight && n >= 0 && n < stageWidth)
+						{
+							if (mGameData[m][n].isPress == false)
+							{
+								mGameData[m][n].mStateBackUp = mGameData[m][n].mState;
+								mGameData[m][n].mState = ncX;
+							}
+							//if (mGameData[m][n].mState == ncFLAG)	//如果状态为旗子
+							//{
+							//	if (mGameData[m][n].mStateBackUp != ncMINE)//如果原先状态不为雷
+							//	{
+							//		//isGameOverState = ncLOSE;
+							//		//isGameBegin = false;
+							//		//unCover();	//揭开剩下未被找到的雷
+							//		break;
+							//	}
+							//}
+							//else //如果状态不是旗子
+							//{
+							//	if (mGameData[m][n].isPress == false)	//未掀开的
+							//	{
+							//		
+							//		if (mGameData[m][n].mState == ncMINE)//如果为雷
+							//		{
+							//			isGameOverState = ncLOSE;
+							//			isGameBegin = false;
+							//			mGameData[m][n].mState = ncBOMBING;
+							//			unCover();
+							//		}
+							//		if (mGameData[m][n].mState == ncNULL)//如果为空
+							//		{
+							//			mGameData[m][n].isPress = true;
+							//		}
+							//	}
+							//}
+
+						}
+					}
+				}
+			}
+		}
+	}
 }
 //查找未被点击的空块
 void MineSweeper::NullClick(int j, int i)
@@ -527,6 +640,38 @@ void MineSweeper::unCoverGrid()
 		for (int i = 0; i < stageWidth; i++)
 		{
 			mGameData[j][i].isPress = true;
+		}
+	}
+}
+//恢复方格状态
+void MineSweeper::RecoverGrid(Vector2i mPoint)
+{
+	int i, j, m, n;
+	i = (mPoint.x - mCornPoint.x) / gridSize;	//获取鼠标当前点击的块
+	j = (mPoint.y - mCornPoint.y) / gridSize;
+	if (i >= 0 && i < stageWidth && j >= 0 && j < stageHeight)	//如果点击是在范围内
+	{
+		if (mGameData[j][i].isPress == true)	//如果已经被点击
+		{
+			if (mGameData[j][i].mState != ncFLAG)	//如果当前块不是旗子
+			{
+				//遍历周围八个格子
+				for (m = j - 1; m < j + 2; m++)
+				{
+					for (n = i - 1; n < i + 2; n++)
+					{
+						if (m >= 0 && m < stageHeight && n >= 0 && n < stageWidth)
+						{
+							if (mGameData[m][n].isPress == false)
+							{
+								mGameData[m][n].mState = mGameData[m][n].mStateBackUp;
+								//mGameData[m][n].mState = ncX;
+							}
+				
+						}
+					}
+				}
+			}
 		}
 	}
 }

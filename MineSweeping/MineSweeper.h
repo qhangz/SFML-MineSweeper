@@ -72,7 +72,9 @@ public:
 	LEI mGameData[LVL3_HEIGHT][LVL3_WIDTH];	//数组取最高难度的舞台尺寸
 	bool isGameBegin;	//判断游戏是否开始
 	int isGameOverState;	//游戏结束的状态
-	bool mouseDlbClkReady;
+	bool mouseDlbClkReady;	//判断鼠标是否双击
+	sf::Vector2i P1, P2;	//两处位置快速点击触发双击的BUG修复
+	int mouse_RL_ClkReady;
 	sf::Vector2i mCornPoint;	//舞台左顶点坐标
 	int gridSize;	//块的大小
 
@@ -94,7 +96,8 @@ public:
 	//SFML的clock类在对象实例化的时候就开始计时
 	//鼠标点击计时器（用于判断单击双击）
 	sf::Clock mouseClickTimer, gameClock;
-
+	sf::Clock mouseRLClickTimer_L, mouseRLClickTimer_R;
+	sf::Clock RecoverGridTimer;	//恢复方格预览状态
 
 	void Run();
 
@@ -106,9 +109,11 @@ public:
 	void Input();
 	void RButtonDown(Vector2i mPoint);	//鼠标右击
 	void LButtonDown(Vector2i mPoint);	//鼠标左击
-	void LButtinDblClk(Vector2i mPoint);	//鼠标左键双击
+	void LButtonDblClk(Vector2i mPoint);	//鼠标左键双击
+	void RLButtonDown(Vector2i mPoint);		//鼠标左右键同时按下
 	void NullClick(int j, int i);
 	void unCoverGrid();		//揭开所有方格，调试用
+	void RecoverGrid(Vector2i mPoint);	//恢复方格状态
 
 	void Logic();
 	void isWin();
