@@ -78,6 +78,8 @@ public:
 	sf::Vector2i mCornPoint;	//舞台左顶点坐标
 	int gridSize;	//块的大小
 
+	bool RLClkJudgeFlag;	//左右键双击预览判断
+
 	/*t
 		tTiles加载的是舞台里雷和数字的素材
 		tNum加载的是得分数字的素材
@@ -97,7 +99,7 @@ public:
 	//鼠标点击计时器（用于判断单击双击）
 	sf::Clock mouseClickTimer, gameClock;
 	sf::Clock mouseRLClickTimer_L, mouseRLClickTimer_R;
-	sf::Clock RecoverGridTimer;	//恢复方格预览状态
+
 
 	void Run();
 
@@ -114,6 +116,7 @@ public:
 	void NullClick(int j, int i);
 	void unCoverGrid();		//揭开所有方格，调试用
 	void RecoverGrid(Vector2i mPoint);	//恢复方格状态
+	void RLClkJudge(Vector2i mPoint);	//左右键双击判定
 
 	void Logic();
 	void isWin();

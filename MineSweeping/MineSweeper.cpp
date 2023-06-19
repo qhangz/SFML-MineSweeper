@@ -49,6 +49,7 @@ void MineSweeper::Initial() {
 	mFlagCalc = 0;		//初始化棋子的数量
 	isGameBegin = false;	//初始化游戏是否开始
 	mTime = 0;				//初始化游戏进行的时间
+	RLClkJudgeFlag = false;
 
 	mCornPoint.x = (Window_Width - stageWidth * GRIDSIZE) / 2;	//设置舞台左上角坐标
 	mCornPoint.y = (Window_Height - stageHeight * GRIDSIZE) / 2;
@@ -262,7 +263,6 @@ void MineSweeper::Input() {
 				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_R.getElapsedTime().asMilliseconds() < 300)
 				{
 					RLButtonDown(Mouse::getPosition(window));
-					RecoverGridTimer.restart();
 				}
 				else
 				{
@@ -296,7 +296,10 @@ void MineSweeper::Input() {
 			if (isGameOverState == ncNo)
 			{
 				mouse_RL_ClkReady = 0;//状态清除
-				RecoverGrid(Mouse::getPosition(window));
+				if (RLClkJudgeFlag == true)
+				{
+					RLClkJudge(Mouse::getPosition(window));
+				}
 			}
 			if (isGameOverState == ncNo)
 			{
@@ -360,7 +363,6 @@ void MineSweeper::Input() {
 				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_L.getElapsedTime().asMilliseconds() < 300)
 				{
 					RLButtonDown(Mouse::getPosition(window));
-					RecoverGridTimer.restart();
 				}
 				else
 				{
@@ -378,7 +380,10 @@ void MineSweeper::Input() {
 			if (isGameOverState == ncNo)
 			{
 				mouse_RL_ClkReady = 0;//状态清除
-				RecoverGrid(Mouse::getPosition(window));
+				if(RLClkJudgeFlag==true)
+				{
+					RLClkJudge(Mouse::getPosition(window));
+				}
 			}
 		}
 		//按键操作
@@ -543,37 +548,10 @@ void MineSweeper::RLButtonDown(Vector2i mPoint)
 						{
 							if (mGameData[m][n].isPress == false)
 							{
+								mGameData[m][n].isPress = true;
 								mGameData[m][n].mStateBackUp = mGameData[m][n].mState;
 								mGameData[m][n].mState = ncX;
 							}
-							//if (mGameData[m][n].mState == ncFLAG)	//如果状态为旗子
-							//{
-							//	if (mGameData[m][n].mStateBackUp != ncMINE)//如果原先状态不为雷
-							//	{
-							//		//isGameOverState = ncLOSE;
-							//		//isGameBegin = false;
-							//		//unCover();	//揭开剩下未被找到的雷
-							//		break;
-							//	}
-							//}
-							//else //如果状态不是旗子
-							//{
-							//	if (mGameData[m][n].isPress == false)	//未掀开的
-							//	{
-							//		
-							//		if (mGameData[m][n].mState == ncMINE)//如果为雷
-							//		{
-							//			isGameOverState = ncLOSE;
-							//			isGameBegin = false;
-							//			mGameData[m][n].mState = ncBOMBING;
-							//			unCover();
-							//		}
-							//		if (mGameData[m][n].mState == ncNULL)//如果为空
-							//		{
-							//			mGameData[m][n].isPress = true;
-							//		}
-							//	}
-							//}
 
 						}
 					}
@@ -581,7 +559,52 @@ void MineSweeper::RLButtonDown(Vector2i mPoint)
 			}
 		}
 	}
+	RLClkJudgeFlag = true;
 }
+
+//左右键双击判定（错了则恢复状态，对了就调用左键双击事件）
+void MineSweeper::RLClkJudge(Vector2i mPoint)
+{
+	int i, j, m, n, mineNum = 0, flagNum = 0;
+	i = (mPoint.x - mCornPoint.x) / gridSize;	//获取鼠标当前点击的块
+	j = (mPoint.y - mCornPoint.y) / gridSize;
+	if (i >= 0 && i < stageWidth && j >= 0 && j < stageHeight)
+	{
+		if (mGameData[j][i].isPress == true)	//如果已经被点击
+		{
+			if (mGameData[j][i].mState != ncFLAG)	//如果当前块不是旗子
+			{
+				//遍历周围八个格子
+				for (m = j - 1; m < j + 2; m++)
+				{
+					for (n = i - 1; n < i + 2; n++)
+					{
+						if (m >= 0 && m < stageHeight && n >= 0 && n < stageWidth)
+						{
+							if (mGameData[m][n].mState == ncFLAG && mGameData[m][n].mStateBackUp == ncMINE)
+							{
+								flagNum++;
+							}
+							if (mGameData[m][n].mState == ncX)
+							{
+								mGameData[m][n].isPress = false;
+								mGameData[m][n].mState = mGameData[m][n].mStateBackUp;
+							}
+						}
+						
+					}
+				}	
+					
+			}
+		}
+		if (mGameData[j][i].mState == flagNum + 2)
+		{
+			LButtonDblClk(mPoint);
+		}
+	}
+	RLClkJudgeFlag = false;
+}
+
 //查找未被点击的空块
 void MineSweeper::NullClick(int j, int i)
 {
