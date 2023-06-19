@@ -1,111 +1,113 @@
 ﻿  Game.cpp
 D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(41,2): warning C4091: “typedef ”: 没有声明变量时忽略“GRIDSTATE”的左侧
 D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(49,2): warning C4091: “typedef ”: 没有声明变量时忽略“GAMEOVERSTATE”的左侧
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(60,2): warning C4091: “typedef ”: 没有声明变量时忽略“mouseActive”的左侧
   MineSweeper.cpp
 D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(41,2): warning C4091: “typedef ”: 没有声明变量时忽略“GRIDSTATE”的左侧
 D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(49,2): warning C4091: “typedef ”: 没有声明变量时忽略“GAMEOVERSTATE”的左侧
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(126,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(477,18): warning C4101: “lvl”: 未引用的局部变量
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(805,66): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(805,37): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(810,66): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(810,37): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(830,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.h(60,2): warning C4091: “typedef ”: 没有声明变量时忽略“mouseActive”的左侧
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(127,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(486,18): warning C4101: “lvl”: 未引用的局部变量
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(801,66): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(801,37): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(806,66): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(806,37): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(826,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(830,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(826,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(839,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(835,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(839,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(835,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(848,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(844,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(848,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(844,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(857,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(853,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(857,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(853,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(866,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(862,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(866,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(862,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(875,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(871,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(875,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(871,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(884,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(880,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(884,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(880,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(895,30): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(891,30): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(896,50): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(892,50): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(897,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(893,47): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(897,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(893,33): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(900,14): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(896,14): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(901,64): warning C4244: “=”: 从“T”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(897,64): warning C4244: “=”: 从“T”转换到“T”，可能丢失数据
           with
           [
               T=float
@@ -114,124 +116,125 @@ D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(901,64): warni
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(902,71): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(898,71): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(909,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(905,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(909,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(905,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(916,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(912,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(916,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(912,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(923,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(919,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(923,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(919,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(932,47): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(928,47): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(933,48): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(929,48): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(934,45): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(930,45): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(934,31): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(930,31): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(939,47): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(942,14): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(935,47): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(938,14): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(943,62): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(939,62): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(944,69): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(940,69): warning C4244: “=”: 从“double”转换到“T”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(953,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(949,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(953,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(949,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(960,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(956,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(960,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(956,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(967,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(963,43): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(967,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(963,29): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(975,19): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(971,19): warning C4244: “初始化”: 从“T”转换到“int”，可能丢失数据
           with
           [
               T=float
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(979,48): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(975,48): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
-D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(979,34): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
+D:\Code\gameprogram\SFML_MineSweeper\MineSweeping\MineSweeper.cpp(975,34): warning C4244: “参数”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=int
           ]
   正在生成代码
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 160 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  18 of 160 functions (11.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   MineSweeping.vcxproj -> D:\Code\gameprogram\SFML_MineSweeper\Release\MineSweeping.exe

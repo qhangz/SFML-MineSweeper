@@ -48,6 +48,17 @@ typedef enum GAMEOVERSTATE
 	ncLOSE,	//游戏失败
 };
 
+//鼠标响应事件
+typedef enum mouseActive
+{
+	mouseNull,
+	RButtonDownFunc,
+	LButtonDownFunc,
+	LButtonDblClkFunc,
+	RLButtonDownFunc,
+	RLClkJudgeFunc,
+};
+
 class LEI
 {
 public:
@@ -79,6 +90,7 @@ public:
 	int gridSize;	//块的大小
 
 	bool RLClkJudgeFlag;	//左右键双击预览判断
+	int mouseActive;	//鼠标响应函数
 
 	/*t
 		tTiles加载的是舞台里雷和数字的素材
@@ -115,7 +127,6 @@ public:
 	void RLButtonDown(Vector2i mPoint);		//鼠标左右键同时按下
 	void NullClick(int j, int i);
 	void unCoverGrid();		//揭开所有方格，调试用
-	void RecoverGrid(Vector2i mPoint);	//恢复方格状态
 	void RLClkJudge(Vector2i mPoint);	//左右键双击判定
 
 	void Logic();

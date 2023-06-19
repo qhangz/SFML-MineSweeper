@@ -50,6 +50,7 @@ void MineSweeper::Initial() {
 	isGameBegin = false;	//初始化游戏是否开始
 	mTime = 0;				//初始化游戏进行的时间
 	RLClkJudgeFlag = false;
+	mouseActive = mouseNull;
 
 	mCornPoint.x = (Window_Width - stageWidth * GRIDSIZE) / 2;	//设置舞台左上角坐标
 	mCornPoint.y = (Window_Height - stageHeight * GRIDSIZE) / 2;
@@ -229,6 +230,7 @@ void MineSweeper::MineSet(int Py, int Px)
 
 void MineSweeper::Input() {
 
+	mouseActive = mouseNull;
 	//event types包括Window、Keyboard、Mouse、Joystick四类消息
 	//通过bool Window::pollEvent(sf::Event&event)从窗口顺序询问（polled）事件
 	//如果有一个事件等待处理，该函数将返回true，并且时间变量将填充（filled）事件数据
@@ -262,7 +264,8 @@ void MineSweeper::Input() {
 				mouseRLClickTimer_L.restart();
 				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_R.getElapsedTime().asMilliseconds() < 300)
 				{
-					RLButtonDown(Mouse::getPosition(window));
+					//RLButtonDown(Mouse::getPosition(window));
+					mouseActive = RLButtonDownFunc;
 				}
 				else
 				{
@@ -274,14 +277,16 @@ void MineSweeper::Input() {
 					{
 						//std::cout << "Mouse::Left Double Clicked" << std::endl;
 						//LButtinDblClk(Mouse::getPosition(window));	//鼠标双击
-						LButtonDblClk(P2);
+						//LButtonDblClk(P2);
+						mouseActive = LButtonDblClkFunc;
 						mouseDlbClkReady = false;
 					}
 					else
 					{
 						//std::cout << "Mouse::Left Pressed" << std::endl;
 						//LButtonDown(Mouse::getPosition(window));	//鼠标单击
-						LButtonDown(P2);
+						//LButtonDown(P2);
+						mouseActive = LButtonDownFunc;
 						mouseDlbClkReady = true;
 
 					}
@@ -298,7 +303,8 @@ void MineSweeper::Input() {
 				mouse_RL_ClkReady = 0;//状态清除
 				if (RLClkJudgeFlag == true)
 				{
-					RLClkJudge(Mouse::getPosition(window));
+					//RLClkJudge(Mouse::getPosition(window));
+					mouseActive = RLClkJudgeFunc;
 				}
 			}
 			if (isGameOverState == ncNo)
@@ -362,11 +368,13 @@ void MineSweeper::Input() {
 				mouseRLClickTimer_R.restart();
 				if (mouse_RL_ClkReady == 2 && mouseRLClickTimer_L.getElapsedTime().asMilliseconds() < 300)
 				{
-					RLButtonDown(Mouse::getPosition(window));
+					//RLButtonDown(Mouse::getPosition(window));
+					mouseActive = RLButtonDownFunc;
 				}
 				else
 				{
-					RButtonDown(Mouse::getPosition(window));	//鼠标单击
+					//RButtonDown(Mouse::getPosition(window));	//鼠标单击
+					mouseActive = RButtonDownFunc;
 				}
 			
 			}
@@ -382,7 +390,8 @@ void MineSweeper::Input() {
 				mouse_RL_ClkReady = 0;//状态清除
 				if(RLClkJudgeFlag==true)
 				{
-					RLClkJudge(Mouse::getPosition(window));
+					//RLClkJudge(Mouse::getPosition(window));
+					mouseActive = RLClkJudgeFunc;
 				}
 			}
 		}
@@ -666,41 +675,28 @@ void MineSweeper::unCoverGrid()
 		}
 	}
 }
-//恢复方格状态
-void MineSweeper::RecoverGrid(Vector2i mPoint)
-{
-	int i, j, m, n;
-	i = (mPoint.x - mCornPoint.x) / gridSize;	//获取鼠标当前点击的块
-	j = (mPoint.y - mCornPoint.y) / gridSize;
-	if (i >= 0 && i < stageWidth && j >= 0 && j < stageHeight)	//如果点击是在范围内
-	{
-		if (mGameData[j][i].isPress == true)	//如果已经被点击
-		{
-			if (mGameData[j][i].mState != ncFLAG)	//如果当前块不是旗子
-			{
-				//遍历周围八个格子
-				for (m = j - 1; m < j + 2; m++)
-				{
-					for (n = i - 1; n < i + 2; n++)
-					{
-						if (m >= 0 && m < stageHeight && n >= 0 && n < stageWidth)
-						{
-							if (mGameData[m][n].isPress == false)
-							{
-								mGameData[m][n].mState = mGameData[m][n].mStateBackUp;
-								//mGameData[m][n].mState = ncX;
-							}
-				
-						}
-					}
-				}
-			}
-		}
-	}
-}
 
 void MineSweeper::Logic()
 {
+	switch (mouseActive)
+	{
+
+	case LButtonDblClkFunc:
+		LButtonDblClk(Mouse::getPosition(window));	//鼠标左键双击单击
+		break;
+	case RLButtonDownFunc:
+		RLButtonDown(Mouse::getPosition(window));	//鼠标左右键双击
+		break;
+	case RLClkJudgeFunc:
+		RLClkJudge(Mouse::getPosition(window));	//鼠标左右键双击判定
+		break;
+	case RButtonDownFunc:
+		RButtonDown(Mouse::getPosition(window));	//鼠标右键单击
+		break;
+	case LButtonDownFunc:
+		LButtonDown(Mouse::getPosition(window));	//鼠标左键单击
+		break;
+	}
 	isWin();
 }
 
